@@ -1,0 +1,16 @@
+{
+    "name": "calen/router",
+    "description": "Laravel Ratchet Router",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pierre-Louis Dagues",
+            "email": "dagues_p@epita.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "cboden/ratchet": "^0.3.4"
+    }
+}
