@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Calen\Router;
 
 use Illuminate\Support\ServiceProvider;
 
