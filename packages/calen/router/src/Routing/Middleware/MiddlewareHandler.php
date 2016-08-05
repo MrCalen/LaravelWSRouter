@@ -16,5 +16,6 @@ class MiddlewareHandler
 
     public function handle(Request $request, Route $route)
     {
+        dd($request);
     }
 }

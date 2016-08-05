@@ -44,7 +44,7 @@ class Router
 
         $path = $message->path;
 
-        $request = new Request($path, $message);
+        $request = new Request($path, $message, $conn);
         $route = $this->routeDispatcher->dispatch($request);
         $this->middlewareHandler->handle($request, $route);
     }
