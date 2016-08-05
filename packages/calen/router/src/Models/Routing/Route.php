@@ -1,6 +1,6 @@
 <?php
 
-namespace Calen\Router\Models;
+namespace Calen\Router\Models\Routing;
 
 class Route implements RoutePart
 {

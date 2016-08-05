@@ -2,7 +2,7 @@
 
 namespace Calen\Router\Routing\Routes;
 
-use Calen\Router\Models\RouteGroup;
+use Calen\Router\Models\Routing\RouteGroup;
 
 class RouteHandler
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Calen\Router\Models;
+namespace Calen\Router\Models\Routing;
 
 use Closure;
 
@@ -27,7 +27,7 @@ class RouteGroup implements RoutePart
     private function fillArgs(string $attr, array $args)
     {
         if (isset($args[$attr])) {
-            $this->{$attr} = $args[$attr];
+            $this->{ $attr } = $args[$attr];
         }
     }
 

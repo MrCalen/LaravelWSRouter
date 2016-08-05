@@ -1,6 +1,6 @@
 <?php
 
-use Calen\Router\Models\RouteGroup;
+use Calen\Router\Models\Routing\RouteGroup;
 
 $routes->group(['namespace' => 'App\Http\Controllers'], function (RouteGroup $routes) {
     $routes->route('/test', 'HomeController@index');
