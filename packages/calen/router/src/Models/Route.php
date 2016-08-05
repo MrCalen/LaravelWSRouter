@@ -2,7 +2,7 @@
 
 namespace Calen\Router\Models;
 
-class Route
+class Route implements RoutePart
 {
     protected $path;
     protected $controller;
@@ -15,12 +15,7 @@ class Route
         $this->controller = $controller;
     }
 
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    public function up(RouteGroup $group)
+    public function up(RouteGroup $group = null)
     {
         if (($middleware = $group->getMiddleware())) {
             array_unshift($this->middlewares, $middleware);

@@ -15,8 +15,6 @@ class RouteHandler
             include 'Routes.php';
         });
 
-        $routes = $this->routes->up(null);
-        var_dump($routes);
-
+        $this->routes = $this->routes->up(null);
     }
 }

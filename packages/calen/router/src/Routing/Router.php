@@ -12,7 +12,6 @@ class Router
     public function __construct()
     {
         $this->routeHandler = new RouteHandler();
-        
     }
 
     public function onMessage(ConnectionInterface $conn, string $message)

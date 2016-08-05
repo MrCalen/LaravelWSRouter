@@ -4,11 +4,10 @@ namespace Calen\Router\Models;
 
 use Closure;
 
-class RouteGroup
+class RouteGroup implements RoutePart
 {
     protected $prefix;
     protected $middleware;
-
 
     protected $parts = [];
 
@@ -18,13 +17,16 @@ class RouteGroup
 
     public function __construct(array $params, self $parent = null)
     {
-        array_map(
-            function ($k) use ($params) {
-                $this->{$k} = $params[$k];
-            },
-            array_keys($params)
-        );
+        $this->fillArgs('prefix', $params);
+        $this->fillArgs('middleware', $params);
         $this->parent = $parent;
+    }
+
+    private function fillArgs(string $attr, array $args)
+    {
+        if (isset($args[$attr])) {
+            $this->{$attr} = $args[$attr];
+        }
     }
 
     public function route(string $path, $controller)
@@ -50,17 +52,15 @@ class RouteGroup
         return $this->prefix;
     }
 
-    public function up($_)
+    public function up(RouteGroup $_ = null)
     {
         foreach ($this->parts as $part) {
             $newroutes = $part->up($this);
 
+            // Is child is a group, up'ed routes
+            // have to be up'ed again to get the new prefix and middleware
             if (is_a($part, RouteGroup::class)) {
-                array_map(
-                    function ($route) {
-                        $route->up($this);
-                    }, $newroutes
-                );
+                array_map(function ($route) { $route->up($this); }, $newroutes);
             }
 
             $this->upRoutes = array_merge($this->upRoutes, $newroutes);
