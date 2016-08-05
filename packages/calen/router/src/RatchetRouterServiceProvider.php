@@ -13,7 +13,6 @@ class RatchetRouterServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
     }
 
     /**

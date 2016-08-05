@@ -41,5 +41,8 @@
                 <div class="title">Laravel 5</div>
             </div>
         </div>
+    <script>
+        var ws = new WebSocket('ws://localhost/ws');
+    </script>
     </body>
 </html>
