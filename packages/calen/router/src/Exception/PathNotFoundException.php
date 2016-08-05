@@ -1,6 +1,6 @@
 <?php
 
-namespace Calen\Router;
+namespace Calen\Router\Exception;
 
 use \Exception;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Calen\Router;
+namespace Calen\Router\Exception;
 
 use Exception;
 
@@ -10,5 +10,4 @@ class JsonDecodeException extends \Exception
     {
         parent::__construct("Could not decode json message", 500, null);
     }
-
 }

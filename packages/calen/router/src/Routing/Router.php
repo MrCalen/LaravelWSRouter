@@ -7,6 +7,10 @@ use Calen\Router\Routing\Routes\RouteDispatcher;
 use Calen\Router\Routing\Routes\RouteHandler;
 use Ratchet\ConnectionInterface;
 
+use Calen\Router\Exception\JsonDecodeException;
+use Calen\Router\Exception\PathNotFoundException;
+use Calen\Router\Exception\NoRoutesFoundException;
+
 class Router
 {
     protected $routeHandler;
@@ -15,6 +19,10 @@ class Router
     public function __construct()
     {
         $this->routeHandler = new RouteHandler();
+        $routes = $this->routeHandler->getRoutes();
+        if (empty($routes)) {
+            throw new NoRoutesFoundException();
+        }
         $this->routeDispatcher = new RouteDispatcher();
     }
 
