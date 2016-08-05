@@ -8,6 +8,7 @@ class RouteGroup implements RoutePart
 {
     protected $prefix;
     protected $middleware;
+    protected $namespace;
 
     protected $parts = [];
 
@@ -19,6 +20,7 @@ class RouteGroup implements RoutePart
     {
         $this->fillArgs('prefix', $params);
         $this->fillArgs('middleware', $params);
+        $this->fillArgs('namespace', $params);
         $this->parent = $parent;
     }
 
@@ -42,16 +44,6 @@ class RouteGroup implements RoutePart
         $closure->call($group, $group);
     }
 
-    public function getMiddleware()
-    {
-        return $this->middleware;
-    }
-
-    public function getPrefix()
-    {
-        return $this->prefix;
-    }
-
     public function up(RouteGroup $_ = null)
     {
         foreach ($this->parts as $part) {
@@ -67,5 +59,20 @@ class RouteGroup implements RoutePart
         }
 
         return $this->upRoutes;
+    }
+
+    public function getMiddleware()
+    {
+        return $this->middleware;
+    }
+
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    public function getNamespace()
+    {
+        return $this->namespace;
     }
 }

@@ -25,6 +25,10 @@ class Route implements RoutePart
             $this->path = $prefix . $this->path;
         }
 
+        if (($namespace = $group->getNamespace())) {
+            $this->controller = $namespace . $this->controller;
+        }
+
         return [$this];
     }
 }
