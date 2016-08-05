@@ -16,6 +16,10 @@ class RouteHandler
         });
 
         $this->routes = $this->routes->up(null);
-        dd($this->routes);
+    }
+
+    public function getRoutes()
+    {
+        return $this->routes;
     }
 }
