@@ -14,5 +14,9 @@ class RouteHandler
         $this->routes->group([], function (RouteGroup $routes) {
             include 'Routes.php';
         });
+
+        $routes = $this->routes->up(null);
+        var_dump($routes);
+
     }
 }
