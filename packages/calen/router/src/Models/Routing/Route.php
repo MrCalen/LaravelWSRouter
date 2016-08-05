@@ -22,11 +22,11 @@ class Route implements RoutePart
         }
 
         if (($prefix = $group->getPrefix())) {
-            $this->path = $prefix . $this->path;
+            $this->path = $prefix . '/' . ltrim($this->path, '/');
         }
 
         if (($namespace = $group->getNamespace())) {
-            $this->controller = $namespace . $this->controller;
+            $this->controller = $namespace . '\\' . ltrim($this->controller, '\\');
         }
 
         return [$this];

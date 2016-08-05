@@ -16,6 +16,6 @@ class RouteHandler
         });
 
         $this->routes = $this->routes->up(null);
-        var_dump($this->routes);
+        dd($this->routes);
     }
 }

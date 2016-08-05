@@ -27,7 +27,7 @@ class RouteGroup implements RoutePart
     private function fillArgs(string $attr, array $args)
     {
         if (isset($args[$attr])) {
-            $this->{ $attr } = $args[$attr];
+            $this->{ $attr } = trim($args[$attr], '/');
         }
     }
 
