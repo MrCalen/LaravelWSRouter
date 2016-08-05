@@ -3,7 +3,7 @@
 use Calen\Router\Models\Routing\RouteGroup;
 
 $routes->group(['namespace' => 'App\Http\Controllers'], function (RouteGroup $routes) {
-    $routes->route('/test', 'HomeController@index');
+    $routes->route('/', 'HomeController@index');
     $routes->group(['prefix' => 'A', 'namespace' => 'App\Calen', 'middleware' => 'test'], function (RouteGroup $group) {
         $group->group(['prefix' => 'B'], function (RouteGroup $group) {
             $group->route('/testAB', 'zde');

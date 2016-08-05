@@ -3,6 +3,7 @@
 namespace Calen\Router;
 
 use Calen\Router\Models\Request;
+use Calen\Router\Routing\Middleware\MiddlewareHandler;
 use Calen\Router\Routing\Routes\RouteDispatcher;
 use Calen\Router\Routing\Routes\RouteHandler;
 use Ratchet\ConnectionInterface;
@@ -15,6 +16,7 @@ class Router
 {
     protected $routeHandler;
     protected $routeDispatcher;
+    protected $middlewareHandler;
 
     public function __construct()
     {
@@ -23,7 +25,8 @@ class Router
         if (empty($routes)) {
             throw new NoRoutesFoundException();
         }
-        $this->routeDispatcher = new RouteDispatcher();
+        $this->routeDispatcher = new RouteDispatcher($routes);
+        $this->middlewareHandler = new MiddlewareHandler();
     }
 
     public function onMessage(ConnectionInterface $conn, string $message)
@@ -42,6 +45,13 @@ class Router
         $path = $message->path;
 
         $request = new Request($path, $message);
-        $this->routeDispatcher->dispatch($request);
+        $route = $this->routeDispatcher->dispatch($request);
+        $this->middlewareHandler->handle($request, $route);
     }
+
+    public function getMiddlewareHandler()
+    {
+        return $this->middlewareHandler;
+    }
+
 }

@@ -31,4 +31,19 @@ class Route implements RoutePart
 
         return [$this];
     }
+
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    public function getMiddlewares()
+    {
+        return $this->middlewares;
+    }
+
+    public function getController()
+    {
+        return $this->controller;
+    }
 }

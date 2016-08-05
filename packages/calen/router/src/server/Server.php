@@ -19,6 +19,7 @@ class Server implements MessageComponentInterface
         if ($this->watcher) {
             $this->watcher->setServer($this);
         }
+
         $this->router = new Router();
     }
 
@@ -52,5 +53,10 @@ class Server implements MessageComponentInterface
         }
 
         $this->router->onMessage($from, $msg);
+    }
+
+    public function getRouter()
+    {
+        return $this->router;
     }
 }
