@@ -18,7 +18,6 @@ class MiddlewareHandler
     private function next(Request $request, $middlewares, $i)
     {
         if ($i >= count($middlewares) - 1) {
-            // FIXME: Handle request controller and function
             return;
         }
 

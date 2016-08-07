@@ -21,11 +21,6 @@ class Server implements MessageComponentInterface
         }
 
         $this->router = new Router();
-
-        // FIXME: put this in the config file
-        $this->router
-            ->getMiddlewareHandler()
-            ->registerMiddleware("test",\App\Http\Middleware\TestMiddleware::class);
     }
 
 

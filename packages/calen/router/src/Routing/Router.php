@@ -27,7 +27,11 @@ class Router
         }
         $this->routeDispatcher = new RouteDispatcher($routes);
         $this->middlewareHandler = new MiddlewareHandler();
+        $this->registerMiddlewares();
     }
+
+    private function registerMiddlewares()
+    {}
 
     public function onMessage(ConnectionInterface $conn, string $message)
     {
