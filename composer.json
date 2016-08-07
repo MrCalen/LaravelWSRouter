@@ -11,6 +11,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "php": "^7.0",
         "cboden/ratchet": "^0.3.4"
     },
     "autoload": {
