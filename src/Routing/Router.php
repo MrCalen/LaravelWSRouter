@@ -31,7 +31,12 @@ class Router
     }
 
     private function registerMiddlewares()
-    {}
+    {
+        $middlewares = config('router.middlewares');
+        foreach ($middlewares as $name => $class) {
+            $this->middlewareHandler->registerMiddleware($name, $class);
+        }
+    }
 
     public function onMessage(ConnectionInterface $conn, string $message)
     {

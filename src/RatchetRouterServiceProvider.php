@@ -14,7 +14,7 @@ class RatchetRouterServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'config/config.php' => config_path('config.php'),
+            __DIR__.'/config/config.php' => config_path('router.php'),
         ]);
     }
 
