@@ -16,7 +16,7 @@ Installation
 Require Calen/router in your L5 project.
 I used PHP7 to write it, so it has a dependency on it.
 
-``` composer require calen/router:dev-master```
+``` composer require calen/router```
 
 Then add the Service Provider in the providers in L5 *config/app.php*:
 ```
