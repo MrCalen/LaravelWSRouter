@@ -23,6 +23,8 @@ class RouteDispatcher
             return $path === $route->getPath();
         });
 
+        $routes = array_values($routes);
+
         if (!count($routes)) {
             throw new PathNotFoundException();
         }

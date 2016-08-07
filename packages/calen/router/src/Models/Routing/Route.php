@@ -23,6 +23,10 @@ class Route implements RoutePart
 
         if (($prefix = $group->getPrefix())) {
             $this->path = $prefix . '/' . ltrim($this->path, '/');
+            // Add slash if it is missing
+            if ($this->path[0] !== '/') {
+                $this->path = '/' . $this->path;
+            }
         }
 
         if (($namespace = $group->getNamespace())) {
