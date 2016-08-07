@@ -2,17 +2,26 @@
 
 namespace Calen\Router\Models\Routing;
 
+use Calen\Router\Exception\RouteBadFormatedException;
+
 class Route implements RoutePart
 {
     protected $path;
     protected $controller;
+    protected $controllerFct;
 
     protected $middlewares = [];
 
     public function __construct(string $path, string $controller)
     {
         $this->path = $path;
-        $this->controller = $controller;
+        $parts = explode('@', $controller);
+        if (count($parts) != 2) {
+            throw new RouteBadFormatedException($controller);
+        }
+
+        $this->controller = $parts[0];
+        $this->controllerFct = $parts[1];
     }
 
     public function up(RouteGroup $group = null) : array
@@ -49,5 +58,10 @@ class Route implements RoutePart
     public function getController() : string
     {
         return $this->controller;
+    }
+
+    public function getControllerFct()
+    {
+        return $this->controllerFct;
     }
 }
