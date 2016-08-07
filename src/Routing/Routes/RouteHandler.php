@@ -12,7 +12,8 @@ class RouteHandler
     {
         $this->routes = new RouteGroup([]);
         $this->routes->group([], function (RouteGroup $routes) {
-            include 'Routes.php';
+            $closure = config('router.routes');
+            $closure->call($this, $routes);
         });
 
         $this->routes = $this->routes->up(null);
