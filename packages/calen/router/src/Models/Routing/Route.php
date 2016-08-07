@@ -15,7 +15,7 @@ class Route implements RoutePart
         $this->controller = $controller;
     }
 
-    public function up(RouteGroup $group = null)
+    public function up(RouteGroup $group = null) : array
     {
         if (($middleware = $group->getMiddleware())) {
             array_unshift($this->middlewares, $middleware);
@@ -36,17 +36,17 @@ class Route implements RoutePart
         return [$this];
     }
 
-    public function getPath()
+    public function getPath() : string
     {
         return $this->path;
     }
 
-    public function getMiddlewares()
+    public function getMiddlewares() : array
     {
         return $this->middlewares;
     }
 
-    public function getController()
+    public function getController() : string
     {
         return $this->controller;
     }

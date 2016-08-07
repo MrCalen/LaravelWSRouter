@@ -4,7 +4,7 @@ namespace Calen\Router\Routing\Middleware;
 
 use Calen\Router\Models\Request;
 
-abstract class Middleware
+interface Middleware
 {
-    public abstract function handle(Request $request, \Closure $next);
+    public function handle(Request $request, \Closure $next);
 }
